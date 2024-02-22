@@ -5,9 +5,29 @@ import {Colors, DebugInstructions, Header} from 'react-native/Libraries/NewAppSc
 const App =  () =>
  
 { //starts here
+
   
+
   const onPressLogin = () => {
     // login operation will go here
+    const email=getEmailFromInput();
+    const password=getPasswordFromInput();
+
+    const query='SELECT * FROM uID, email, password from user where email=user and password=password';
+    connection.query(query, [email, password],(err,results)=>{
+      if(err){
+        console.error('Login failed:',err);
+        return;
+      }
+      if(results.length===1){
+        console.log('Login successful.Welcome,',results[0].email);
+      }
+      else{
+        console.error('Invalid email or password');
+      }
+      connection.end();
+    })
+
   };
 
   const onPressForgotPassword = () => {
@@ -135,18 +155,19 @@ return (
 //adding practice mysql
 const mysql=require('mysql')
 const connection=mysql.createConnection({
-  host:'localhost',
-  user:'',
-  password:'',
+  host:'GWTC51427',
+  user:'root',
+  password:'database',
   database:'select_park'
 })
-
-connection.connect()
-connection.query('SELECT 1 + 1 AS solution', (err,rows,fields)=>{
-  if (err)throw err
-console.log('The solution is:', rows[0].solution)
+ 
+connection.connect((err)=>{
+  if(err){
+    console.error('Error connecting to Mysql:',err);
+    return;
+  }
+  console.log('Connected to Mysql');
 })
-connection.end()
 
 
 export default App;
