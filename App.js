@@ -132,4 +132,21 @@ return (
   },
 }); //end here
 
+//adding practice mysql
+const mysql=require('mysql')
+const connection=mysql.createConnection({
+  host:'localhost',
+  user:'',
+  password:'',
+  database:'select_park'
+})
+
+connection.connect()
+connection.query('SELECT 1 + 1 AS solution', (err,rows,fields)=>{
+  if (err)throw err
+console.log('The solution is:', rows[0].solution)
+})
+connection.end()
+
+
 export default App;
