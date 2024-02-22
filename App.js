@@ -10,6 +10,7 @@ const App =  () =>
 
   const onPressLogin = () => {
     // login operation will go here
+    /*
     const email=getEmailFromInput();
     const password=getPasswordFromInput();
 
@@ -27,7 +28,7 @@ const App =  () =>
       }
       connection.end();
     })
-
+*/
   };
 
   const onPressForgotPassword = () => {
@@ -36,6 +37,7 @@ const App =  () =>
 
   const onPressSignUp = () => {
     // sign up hyperlink will go here
+    
   };
 
 
@@ -153,10 +155,11 @@ return (
 }); //end here
 
 //adding practice mysql
+/*
 const mysql=require('mysql')
 const connection=mysql.createConnection({
   host:'GWTC51427',
-  user:'root',
+  user:'magal',
   password:'database',
   database:'select_park'
 })
@@ -168,6 +171,6 @@ connection.connect((err)=>{
   }
   console.log('Connected to Mysql');
 })
-
+*/
 
 export default App;
